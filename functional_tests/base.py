@@ -1,8 +1,6 @@
-import sys
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from unittest import skip
+import sys
 
 class FunctionalTest(StaticLiveServerTestCase):
 
