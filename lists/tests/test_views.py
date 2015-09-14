@@ -1,3 +1,4 @@
+from lists.forms import ItemForm
 from django.utils.html import escape
 from django.core.urlresolvers import resolve
 from django.test import TestCase
@@ -18,6 +19,14 @@ class HomePageTest(TestCase):
         response = home_page(request)
         expected_html = render_to_string('home.html')
         self.assertEqual(response.content.decode(), expected_html)
+
+    def test_home_page_renders_home_template(self):
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'home.html')
+
+    def test_home_page_uses_item_form(self):
+        response = self.client.get('/')
+        self.assertIsInstance(response.context['form'], ItemForm)
 
 class ListViewTest(TestCase):
 
