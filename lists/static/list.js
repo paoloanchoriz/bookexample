@@ -1,4 +1,9 @@
+(function($) {
+    $(document).ready(function() {
+        $('input').on('keypress', function() {
+            $('.has-error').hide();
+        });
+    });
+})(jQuery);
 
-$('input').on('keypress', function() {
-    $('.has-error').hide();
-});
+
