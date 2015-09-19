@@ -59,14 +59,17 @@
 
 					var currentUser = '{{ user.email }}' || null;
 					var csrf_token = '{{ csrf_token }}';
-					console.log(currentUser);
 
 					navigator.id.watch({
 						loggedInUser: currentUser,
 						onlogin: function(assertion) {
 							$.post('/accounts/login', { assertion: assertion, csrfmiddlewaretoken: csrf_token})
-								.done(function() { window.location.reload(); })
-								.fail(function() { navigator.id.logout(); });
+								.done(function() { 
+									window.location.reload(); 
+								})
+								.fail(function() { 
+									navigator.id.logout(); 
+								});
 						},
 						onlogout: function() {
 							$.post('/accounts/logout')
